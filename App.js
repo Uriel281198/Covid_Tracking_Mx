@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Text, View, FlatList, Dimensions, Image, StatusBar, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { Dimensions,StatusBar, StyleSheet } from 'react-native';
 
 import styled from 'styled-components';
 import BackgroundHeader from './src/components/BackgroundHeader';
 import BottomTab from './src/components/BottomTab';
 import HomeScreen from './src/components/HomeScreen';
 import CasesScreen from './src/components/CasesScreen';
-
-const WIDTH = Dimensions.get('window').width;
-const HEIGHT = Dimensions.get('window').height;
-
 
 const App = () => {
 

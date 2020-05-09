@@ -2,16 +2,16 @@ import React,{useState,useEffect} from 'react'
 import { StyleSheet, Text, View, Image,ActivityIndicator, Dimensions, FlatList } from 'react-native'
 import styled from 'styled-components';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-
+import  URL_API  from '../secret/secret'
 const w = Dimensions.get('window').width;
 
-const CasesScreen = ({navigation }) => {
+const CasesScreen = () => {
 
     const [isloading,setLoading] = useState(true);
     const [datos,setDatos] = useState([]);
     useEffect((x,i)=>{
         async function getdata(){
-            const data = await fetch('https://api-anime-schedule.herokuapp.com/v1/covid');
+            const data = await fetch(URL_API);
             const resultado = await data.json()
             setDatos(resultado)   
             if(datos){
@@ -25,12 +25,12 @@ const CasesScreen = ({navigation }) => {
     remderItem = ({ item, index }) => {
         return (
             <View style={styles.item}>
-                <Text>{item.name}</Text>
-                <AntDesign name="minus" color={"#fbc02d"} size={20} style={{ margin: 2 }} />
+                <Text style>{item.name}</Text>
+                <AntDesign name="minus" color={"#fbc02d"} size={15} style={{ margin: 2 }} />
                 <Text>{item.datos.confirmados}</Text>
-                <AntDesign name="minus" color={"#4caf50"} size={20} style={{ margin: 2 }} />
+                <AntDesign name="minus" color={"#4caf50"} size={15} style={{ margin: 2 }} />
                 <Text>{item.datos.recuperadas}</Text>
-                <AntDesign name="minus" color={"#d32f2f"} size={20} style={{ margin: 2 }} />
+                <AntDesign name="minus" color={"#d32f2f"} size={15} style={{ margin: 2 }} />
                 <Text>{item.datos.muertes}</Text>
             </View>
         )
@@ -133,6 +133,7 @@ const styles = StyleSheet.create({
         shadowColor: 'black',
         shadowOpacity: 1,
         elevation: 3,
+        flexWrap:'wrap',
         shadowRadius: 2,
         marginTop: 20,  
         borderLeftWidth:3,
